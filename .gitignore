@@ -2,3 +2,6 @@
 
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
+
+# Node Modules
+node_modules
