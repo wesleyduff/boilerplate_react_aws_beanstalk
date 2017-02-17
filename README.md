@@ -1,10 +1,6 @@
 # AWS Elastic Beanstalk Express Sample App
 This sample application uses the [Express](https://expressjs.com/), react, redux framework to build an account link application for alexa that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). 
 
-## Features
-### Themes
-The code includes several Bootstrap themes from [bootswatch.com](http://bootswatch.com/). You can dynamically change the active theme by setting the THEME environment variable in the [Elastic Beanstalk Management Console](https://console.aws.amazon.com/elasticbeanstalk):)
-
 You can get started using the following steps:
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
   2. Create an IAM Instance Profile named **aws-elasticbeanstalk-sample-role** with the policy in [iam_policy.json](iam_policy.json). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
