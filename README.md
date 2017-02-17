@@ -1,4 +1,4 @@
-# AWS Elastic Beanstalk Express Sample App
+# AWS Elastic Beanstalk Express React Redux Webpack - boiler plate code
 This sample application uses the [Express](https://expressjs.com/), react, redux framework to build an account link application for alexa that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). 
 
 You can get started using the following steps:
