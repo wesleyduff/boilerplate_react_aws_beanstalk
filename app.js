@@ -1,5 +1,6 @@
 // Include the cluster module
 var cluster = require('cluster');
+var path = require( 'path' );
 
 // Code to run if we're in the master process
 if (cluster.isMaster) {
@@ -29,17 +30,21 @@ if (cluster.isMaster) {
 
     AWS.config.region = process.env.REGION
 
-    var sns = new AWS.SNS();
+   /* var sns = new AWS.SNS();
     var ddb = new AWS.DynamoDB();
 
-    var ddbTable =  process.env.STARTUP_SIGNUP_TABLE;
+    var ddbTable =  process.env.STARTUP_SIGNUP_TABLE;*/
     var snsTopic =  process.env.NEW_SIGNUP_TOPIC;
     var app = express();
-    app.set('view engine', 'ejs');
-    app.set('views', __dirname + '/views');
-    app.use(bodyParser.urlencoded({extended:false}));
-     app.use(express.static('static'));
-    app.get('/', function(req, res) {
+    
+    app.use(express.static('public'));
+    
+    app.get('*', function(req, res) {
+      res.sendFile(path.join( __dirname, './src/index.html'));
+    });
+    
+    
+    /*app.get('/', function(req, res) {
         res.render('index', {
             static_path: '',
             theme: process.env.THEME || 'flatly',
@@ -86,7 +91,7 @@ if (cluster.isMaster) {
                 });            
             }
         });
-    });
+    });*/
 
     var port = process.env.PORT || 3000;
 
