@@ -20,7 +20,11 @@
     "bootstrap-loader": "^2.0.0-beta.21",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.26.1",
+    "eslint": "^3.16.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "express": "^4.14.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "0.8.5",
     "jquery": "^3.1.1",
     "node-sass": "^4.5.0",
@@ -30,11 +34,12 @@
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
+    "redux-immutable-state-invariant": "^1.2.4",
     "redux-thunk": "^2.2.0",
     "resolve-url-loader": "^2.0.0",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "1.13.0"
+    "webpack": "^1.13.0"
   }
 }

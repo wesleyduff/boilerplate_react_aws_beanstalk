@@ -1,6 +1,15 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class HomePage extends React.Component {
+    
+    constructor(props, context){
+        super(props, context);
+        
+        this.state = {
+            app: { name: "HealthGrades" }
+        };
+    }
+    
     render(){
         return (
             <div>
@@ -66,5 +75,9 @@ class HomePage extends React.Component {
         );
     }
 }
+
+HomePage.PropTypes
+
+
 
 export default HomePage;
