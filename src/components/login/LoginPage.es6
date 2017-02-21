@@ -8,9 +8,8 @@ class LoginPage extends React.Component{
         super(props, context);
         
         this.state = {
-            oauth: {
-                url: "http://www.cnn.com"
-            }
+            oauth: Object.assign({}, props.oauth),
+            errors: {}
         };
         
         //binding
@@ -18,19 +17,18 @@ class LoginPage extends React.Component{
     }
     
     
+    
     submitForm(event){
         event.preventDefault();
-        const oauth = this.state.oauth;
-        oauth.url = 'updateUrlFromSubmit in LoginPage';
+       
+        this.props.callOauth('test');
         
-        this.setState({oauth: oauth});
-        console.log('In Submit Form set state --------- ', this.state);
-        this.props.callOauth(this.state.oauth);
+        
     }
     
 
     render(){
-        console.log('initial state: ', this.state);
+        console.log('intial state ', this.state);
         return (
             <div className="container login">
                 <div className="row">
@@ -61,8 +59,10 @@ LoginPage.propTypes = {
 
 
 function mapStateToProps(state, ownProps){
+    let oauth = {url: 'base', token: ''};
+    console.log('----state in mapStateToProps :', state);
     return {
-        oauth: state.oauth
+        oauth: oauth
     };
 }
 
