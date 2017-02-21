@@ -37238,8 +37238,9 @@
 
 	        var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props, context));
 
+	        console.log('props : ', props);
 	        _this.state = {
-	            oauth: Object.assign({}, props.oauth),
+	            login: Object.assign({}, props.login),
 	            errors: {}
 	        };
 
@@ -37258,10 +37259,15 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            console.log('intial state ', this.state);
+	            console.log('intial props ', this.props);
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'container login' },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    this.props.login.oauth.token
+	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
@@ -37309,15 +37315,14 @@
 	;
 
 	LoginPage.propTypes = {
-	    oauth: _react.PropTypes.object.isRequired,
+	    login: _react.PropTypes.object.isRequired,
 	    callOauth: _react.PropTypes.func.isRequired
 	};
 
 	function mapStateToProps(state, ownProps) {
-	    var oauth = { url: 'base', token: '' };
-	    console.log('----state in mapStateToProps :', state);
+	    console.log('----state in mapStateToProps :', state.login);
 	    return {
-	        oauth: oauth
+	        login: state.login
 	    };
 	}
 
@@ -37467,7 +37472,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var rootReducer = (0, _redux.combineReducers)({
-	    oauth: _oauthReducer2.default
+	    login: _oauthReducer2.default
 	});
 
 	exports.default = rootReducer;
@@ -37482,22 +37487,28 @@
 	    value: true
 	});
 	exports.default = oauthReducer;
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	var initialState = {
+	    oauth: {
+	        url: 'initial_state.html',
+	        token: null
+	    }
+	};
 
 	function oauthReducer() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { oauth: {} };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
 
+	    var newState = null;
+	    console.log('reducer', action);
 	    switch (action.type) {
 	        case 'OAUTH_TOKEN_SUCCESS':
 	            {
-	                console.log('oauth token success action : ', action);
-	                console.log('oauth token success state : ', state);
-	                var current = Object.assign.apply(Object, [{}].concat(_toConsumableArray(state), [action.oauth]));
-	                console.log('Current - ', current);
-	                return current;
+	                newState = Object.assign({}, state);
+	                console.log('newState BEFORE', Object.assign({}, newState));
+	                newState.oauth = action.oauth;
+	                console.log('new state AFTER : ', newState);
+	                return newState;
 	            }
 	        default:
 	            return state;

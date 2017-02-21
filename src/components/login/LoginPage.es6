@@ -7,8 +7,9 @@ class LoginPage extends React.Component{
     constructor(props, context){
         super(props, context);
         
+        console.log('props : ', props)
         this.state = {
-            oauth: Object.assign({}, props.oauth),
+            login: Object.assign({}, props.login),
             errors: {}
         };
         
@@ -23,14 +24,14 @@ class LoginPage extends React.Component{
        
         this.props.callOauth('test');
         
-        
     }
     
 
     render(){
-        console.log('intial state ', this.state);
+        console.log('intial props ', this.props);
         return (
             <div className="container login">
+                <h1>{this.props.login.oauth.token}</h1>
                 <div className="row">
                     <div className="col-xs-12">
                         <form>
@@ -53,16 +54,15 @@ class LoginPage extends React.Component{
 
 
 LoginPage.propTypes = {
-    oauth: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired,
     callOauth: PropTypes.func.isRequired
 }
 
 
 function mapStateToProps(state, ownProps){
-    let oauth = {url: 'base', token: ''};
-    console.log('----state in mapStateToProps :', state);
+    console.log('----state in mapStateToProps :', state.login);
     return {
-        oauth: oauth
+        login: state.login
     };
 }
 
